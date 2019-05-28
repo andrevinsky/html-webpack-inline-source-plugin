@@ -12,10 +12,10 @@ HtmlWebpackInlineSourcePlugin.prototype.apply = function (compiler) {
   var self = this;
 
   // Hook into the html-webpack-plugin processing
-  compiler.hooks.compilation.tap('html-webpack-inline-source-plugin', compilation => {
+  compiler.hooks.compilation.tap('html-webpack-inline-source-plugin-patched', compilation => {
     self.htmlWebpackPlugin
       .getHooks(compilation)
-      .alterAssetTagGroups.tapAsync('html-webpack-inline-source-plugin', (htmlPluginData, callback) => {
+      .alterAssetTagGroups.tapAsync('html-webpack-inline-source-plugin-patched', (htmlPluginData, callback) => {
         if (!htmlPluginData.plugin.options.inlineSource) {
           return callback(null, htmlPluginData);
         }
